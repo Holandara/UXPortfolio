@@ -75,7 +75,7 @@ export const UX_PROJECTS: UxProject[] = [
       'O processo incluiu testes de usabilidade e pesquisas de usuário. ',
     tags: ['UX Research', 'UI Design', 'Prototipagem', 'Testes de Usabilidade', 'Figma'],
     link: 'https://www.behance.net/gallery/247945923/Case-Study-UXUI-Coffee-App',
-    route: '/coffee-app',
+    route: 'https://www.behance.net/gallery/247945923/Case-Study-UXUI-Coffee-App',
     coverImage: 'images/CoffeeApp/1.png',
     screens: [
       'images/CoffeeApp/1.png',
