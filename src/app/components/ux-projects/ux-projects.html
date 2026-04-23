@@ -87,13 +87,26 @@
               }
             </div>
 
-            <a
-              [routerLink]="project.route"
-              class="inline-flex items-center gap-2 bg-dark text-white font-display font-semibold px-7 py-3.5 text-sm tracking-wide uppercase hover:bg-dark/80 transition-colors duration-200 no-underline cursor-pointer"
-            >
-              Ver Case Completo
-              <lucide-icon name="arrow-right" [size]="14"></lucide-icon>
-            </a>
+            <div class="flex flex-wrap gap-3">
+              <a
+                [routerLink]="project.route"
+                class="inline-flex items-center gap-2 bg-dark text-white font-display font-semibold px-7 py-3.5 text-sm tracking-wide uppercase hover:bg-dark/80 transition-colors duration-200 no-underline cursor-pointer"
+              >
+                Ver Case Completo
+                <lucide-icon name="arrow-right" [size]="14"></lucide-icon>
+              </a>
+              @if (project.link && project.link !== '#') {
+                <a
+                  [href]="project.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 border-2 border-dark text-dark font-display font-semibold px-7 py-3.5 text-sm tracking-wide uppercase hover:bg-dark hover:text-white transition-colors duration-200 no-underline cursor-pointer"
+                >
+                  Behance
+                  <lucide-icon name="external-link" [size]="14"></lucide-icon>
+                </a>
+              }
+            </div>
           </div>
         </article>
       }

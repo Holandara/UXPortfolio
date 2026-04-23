@@ -71,10 +71,10 @@ export const UX_PROJECTS: UxProject[] = [
     title: 'Coffee App',
     subtitle: 'Experiência de Pedido de Café',
     description:
-      'Redesign completo da experiência de pedido de café especial. ' +
-      'O processo incluiu testes de usabilidade e pesquisas de usuário. ',
-    tags: ['UX Research', 'UI Design', 'Prototipagem', 'Testes de Usabilidade', 'Figma'],
-    link: '#',
+      'Projeto de conclusão do Google UX Design Certificate. Cenário fictício de pedido de café especial — ' +
+      'personas, wireframes, Design System e protótipo de alta fidelidade com 13 telas no Figma.',
+    tags: ['Google UX Certificate', 'UI Design', 'Prototipagem', 'Design System', 'Figma'],
+    link: 'https://www.behance.net/gallery/247945923/Case-Study-UXUI-Coffee-App',
     route: '/coffee-app',
     coverImage: 'images/CoffeeApp/1.png',
     screens: [
