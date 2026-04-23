@@ -64,7 +64,7 @@ export const UX_PROJECTS: UxProject[] = [
       'images/Aurora/UNLOCK.png',
       'images/Aurora/LOAD.png',
     ],
-    format: 'mobile',
+    format: 'mobile'
   },
   {
     id: 'coffee-app',
@@ -74,8 +74,8 @@ export const UX_PROJECTS: UxProject[] = [
       'Redesign completo da experiência de pedido de café especial. ' +
       'O processo incluiu testes de usabilidade e pesquisas de usuário. ',
     tags: ['UX Research', 'UI Design', 'Prototipagem', 'Testes de Usabilidade', 'Figma'],
-    link: 'https://www.behance.net/gallery/247945923/Case-Study-UXUI-Coffee-App',
-    route: 'https://www.behance.net/gallery/247945923/Case-Study-UXUI-Coffee-App',
+    link: '#',
+    route: '/coffee-app',
     coverImage: 'images/CoffeeApp/1.png',
     screens: [
       'images/CoffeeApp/1.png',
@@ -87,7 +87,7 @@ export const UX_PROJECTS: UxProject[] = [
       'images/CoffeeApp/7.png',
       'images/CoffeeApp/8.png',
     ],
-    format: 'desktop',
+    format:'desktop'
   },
 ];
 
