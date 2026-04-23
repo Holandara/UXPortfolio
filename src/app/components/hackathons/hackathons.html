@@ -1,0 +1,62 @@
+<section id="hackathons" class="bg-cotton-candy py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Header -->
+    <div class="section-header mb-16">
+      <p class="reveal-child text-dark/50 text-sm font-medium tracking-[0.3em] uppercase mb-3 opacity-0">
+        Competições &amp; Prêmios
+      </p>
+      <h2 class="reveal-child font-display font-black text-dark leading-none opacity-0"
+          style="font-size: clamp(2.5rem, 6vw, 5rem);">
+        Hackathons
+      </h2>
+      <div class="reveal-child w-20 h-1 bg-dark mt-4 opacity-0"></div>
+    </div>
+
+    <!-- Grid -->
+    <div class="hack-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (hack of hackathons(); track hack.id) {
+        <article class="hack-card group bg-white/30 backdrop-blur-sm border border-dark/10 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 opacity-0">
+
+          <!-- Image -->
+          <div class="relative overflow-hidden aspect-video">
+            <img
+              [src]="hack.image"
+              [alt]="hack.eventName"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <span
+              class="absolute top-3 right-3 font-display font-black text-xs tracking-widest uppercase px-3 py-1.5"
+              [class]="getBadgeClass(hack.position)"
+            >
+              {{ hack.positionLabel }}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <h3 class="font-display font-bold text-dark text-xl leading-tight">
+                {{ hack.eventName }}
+              </h3>
+              <span class="text-dark/40 text-sm font-medium shrink-0">{{ hack.year }}</span>
+            </div>
+            <p class="text-dark/70 text-sm leading-relaxed">{{ hack.description }}</p>
+            <div class="mt-5 flex items-center gap-2 text-dark/50">
+              <lucide-icon name="award" [size]="14"></lucide-icon>
+              <span class="text-xs font-medium tracking-wide uppercase">{{ hack.positionLabel }}</span>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- Bottom watermark -->
+    <div class="mt-16 text-center overflow-hidden">
+      <p class="font-display font-black text-dark/15 select-none pointer-events-none"
+         style="font-size: clamp(4rem, 14vw, 10rem); line-height: 1;">
+        6 Prêmios
+      </p>
+    </div>
+  </div>
+</section>

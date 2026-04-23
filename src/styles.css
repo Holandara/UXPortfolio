@@ -1,0 +1,78 @@
+@import "primeicons/primeicons.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0F0F0F;
+    color: #fff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.15;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  ::selection {
+    background-color: #FBAF00;
+    color: #0F0F0F;
+  }
+}
+
+@layer utilities {
+  .bg-amber-flame {
+    background-color: #FBAF00;
+  }
+  .bg-gold {
+    background-color: #FFD639;
+  }
+  .bg-cotton-candy {
+    background-color: #FFA3AF;
+  }
+  .bg-teal-blue {
+    background-color: #007CBE;
+  }
+  .bg-jungle {
+    background-color: #00AF54;
+  }
+  .bg-dark {
+    background-color: #0F0F0F;
+  }
+  .bg-surface {
+    background-color: #161616;
+  }
+  .bg-card {
+    background-color: #1E1E1E;
+  }
+  .text-amber-flame {
+    color: #FBAF00;
+  }
+  .text-gold {
+    color: #FFD639;
+  }
+  .text-teal-blue {
+    color: #007CBE;
+  }
+  .text-jungle {
+    color: #00AF54;
+  }
+}

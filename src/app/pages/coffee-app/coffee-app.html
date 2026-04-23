@@ -1,0 +1,258 @@
+<!-- ═══════════════════════════════════════════════════════════════
+     COFFEE APP — Case Study Page
+═══════════════════════════════════════════════════════════════ -->
+
+<!-- ── HERO ── -->
+<section class="relative min-h-[70vh] bg-dark flex flex-col justify-end overflow-hidden pt-24 pb-20">
+
+  <!-- Gradient accent -->
+  <div class="absolute inset-0"
+       style="background: radial-gradient(ellipse 70% 60% at 60% 40%, rgba(255,214,57,0.10) 0%, transparent 70%);"></div>
+
+  <!-- Back -->
+  <div class="absolute top-20 left-0 right-0 max-w-6xl mx-auto px-6 lg:px-10">
+    <button
+      (click)="goBack()"
+      class="flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm font-medium bg-transparent border-0 cursor-pointer"
+    >
+      <lucide-icon name="arrow-right" [size]="14" class="rotate-180"></lucide-icon>
+      Voltar
+    </button>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-6 lg:px-10 w-full">
+    <span class="inline-block text-gold text-xs font-display font-bold tracking-[0.3em] uppercase mb-4">
+      Projeto de Curso — Google UX Design Certificate
+    </span>
+    <h1 class="font-display font-black text-white mb-6 leading-none"
+        style="font-size: clamp(3.5rem, 9vw, 7rem);">
+      Coffee App
+    </h1>
+    <p class="text-white/60 max-w-2xl text-lg leading-relaxed">
+      Redesign completo da experiência de pedido de café especial — do
+      <strong class="text-white/90">desejo ao pós-consumo</strong>,
+      com foco em personalização e fidelização.
+    </p>
+
+    <div class="flex flex-wrap gap-3 mt-10">
+      @for (tag of ['UX Research', 'UI Design', 'Prototipagem', 'Design System', 'Figma', 'Testes de Usabilidade']; track tag) {
+        <span class="text-xs font-medium bg-white/8 text-white/70 border border-white/10 px-3 py-1.5 rounded-full">
+          {{ tag }}
+        </span>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<section class="bg-dark border-t border-white/5 py-20">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- O Desafio -->
+      <div class="fade-up opacity-0">
+        <p class="text-gold text-xs font-display font-bold tracking-[0.3em] uppercase mb-4">O Desafio</p>
+        <h2 class="font-display font-black text-white text-3xl lg:text-4xl leading-tight mb-6">
+          Um projeto fictício para aprender UX de verdade
+        </h2>
+        <p class="text-white/60 leading-relaxed text-base">
+          Este projeto foi criado como trabalho de conclusão do <strong class="text-white/80">Google UX Design Certificate</strong> — um curso prático que ensina o processo completo de design centrado no usuário, da pesquisa ao protótipo.
+        </p>
+        <p class="text-white/60 leading-relaxed text-base mt-4">
+          O cenário é fictício: um app de pedido de café especial. Mas o processo foi real — personas, jornadas, wireframes, Design System e um protótipo de alta fidelidade com 13 telas no Figma.
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 gap-4 fade-up opacity-0">
+        @for (stat of [
+          { value: '13', label: 'Telas projetadas', sub: 'Cobertura completa do fluxo' },
+          { value: '4', label: 'Fluxos principais', sub: 'Onboarding · Descoberta · Pedido · Experiência' },
+          { value: '1', label: 'Design System', sub: 'Componentes e estilos documentados' },
+          { value: '✓', label: 'Certificado Google', sub: 'UX Design Professional Certificate' }
+        ]; track stat.label) {
+          <div class="bg-white/4 border border-white/8 p-6">
+            <p class="font-display font-black text-gold text-3xl">{{ stat.value }}</p>
+            <p class="text-white font-semibold text-sm mt-1">{{ stat.label }}</p>
+            <p class="text-white/40 text-xs mt-1">{{ stat.sub }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCREEN SHOWCASE ── -->
+<section class="bg-surface py-20">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="fade-up opacity-0 mb-10">
+      <p class="text-gold text-xs font-display font-bold tracking-[0.3em] uppercase mb-3">Protótipo</p>
+      <h2 class="font-display font-black text-white text-3xl lg:text-4xl">As Telas</h2>
+    </div>
+
+    <!-- Group filter tabs -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      @for (group of groups; track group.id) {
+        <button
+          (click)="setGroup(group.id)"
+          class="font-display font-semibold text-xs tracking-widest uppercase px-5 py-2.5 border-2 transition-all duration-200 cursor-pointer"
+          [class]="activeGroup() === group.id
+            ? 'bg-gold text-dark border-gold'
+            : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white'"
+        >
+          {{ group.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Main slide viewer -->
+    <div class="relative w-full fade-up opacity-0">
+      <!-- Slide container -->
+      <div class="relative bg-[#111] rounded-xl overflow-hidden shadow-2xl border border-white/8 aspect-[16/10]">
+        <img
+          [src]="screens[activeScreen()].src"
+          [alt]="screens[activeScreen()].label"
+          class="w-full h-full object-cover transition-opacity duration-300"
+        />
+
+        <!-- Prev / Next -->
+        <button
+          (click)="prevScreen()"
+          class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-gold hover:text-dark text-white rounded-full flex items-center justify-center border-0 cursor-pointer transition-colors duration-200 backdrop-blur-sm"
+        >
+          <lucide-icon name="chevron-down" [size]="16" class="rotate-90"></lucide-icon>
+        </button>
+        <button
+          (click)="nextScreen()"
+          class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-gold hover:text-dark text-white rounded-full flex items-center justify-center border-0 cursor-pointer transition-colors duration-200 backdrop-blur-sm"
+        >
+          <lucide-icon name="chevron-down" [size]="16" class="-rotate-90"></lucide-icon>
+        </button>
+
+        <!-- Label overlay bottom -->
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-6 py-5">
+          <p class="text-gold font-display font-semibold text-sm">{{ screens[activeScreen()].label }}</p>
+          <p class="text-white/60 text-xs mt-0.5 leading-relaxed">{{ screens[activeScreen()].description }}</p>
+        </div>
+
+        <!-- Slide counter -->
+        <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white/70 text-xs font-medium px-3 py-1 rounded-full">
+          {{ activeScreen() + 1 }} / {{ screens.length }}
+        </div>
+      </div>
+
+      <!-- Thumbnail strip -->
+      <div class="flex gap-2 mt-4 overflow-x-auto pb-2">
+        @for (screen of filteredScreens; track screen.src) {
+          <button
+            (click)="setScreen(screens.indexOf(screen))"
+            class="relative flex-shrink-0 w-28 aspect-[16/10] overflow-hidden border-2 rounded transition-all duration-200 cursor-pointer p-0 bg-transparent"
+            [class]="screens[activeScreen()].src === screen.src
+              ? 'border-gold shadow-md shadow-yellow-500/20 opacity-100'
+              : 'border-white/10 hover:border-white/30 opacity-50 hover:opacity-80'"
+          >
+            <img
+              [src]="screen.src"
+              [alt]="screen.label"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSIGHTS ── -->
+<section class="bg-gold py-20">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="fade-up opacity-0 mb-12">
+      <p class="text-dark/50 text-xs font-display font-bold tracking-[0.3em] uppercase mb-3">Aprendizados</p>
+      <h2 class="font-display font-black text-dark text-3xl lg:text-4xl">O que o curso me ensinou</h2>
+    </div>
+
+    <div class="stagger-group grid grid-cols-1 md:grid-cols-3 gap-6">
+      @for (insight of [
+        { title: 'Processo antes de estética', description: 'A maior lição foi resistir ao impulso de abrir o Figma logo. Entender o usuário, definir o problema e estruturar os fluxos primeiro faz toda a diferença no resultado final.' },
+        { title: 'Wireframe é pensamento, não arte', description: 'Wireframes feios e rápidos são melhores do que wireframes bonitos e lentos. O objetivo é testar a lógica da navegação, não impressionar ninguém.' },
+        { title: 'Design System economiza tempo', description: 'Criar componentes reutilizáveis desde o início transformou a prototipagem das 13 telas numa tarefa muito mais fluida e consistente.' }
+      ]; track insight.title; let i = $index) {
+        <div class="stagger-item opacity-0 bg-black/10 border border-dark/15 p-8 relative overflow-hidden group">
+          <span class="font-display font-black text-dark/8 text-7xl absolute -top-3 -right-2 leading-none">
+            0{{ i + 1 }}
+          </span>
+          <h3 class="font-display font-bold text-dark text-xl mb-4 relative">{{ insight.title }}</h3>
+          <p class="text-dark/65 text-sm leading-relaxed relative">{{ insight.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="bg-dark py-20">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="fade-up opacity-0 mb-16">
+      <p class="text-gold text-xs font-display font-bold tracking-[0.3em] uppercase mb-3">Google UX Design Certificate</p>
+      <h2 class="font-display font-black text-white text-3xl lg:text-4xl">As fases do projeto</h2>
+    </div>
+
+    <div class="flex flex-col gap-0">
+      @for (step of processSteps; track step.number; let last = $last) {
+        <div class="fade-up opacity-0 grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-0 lg:gap-10">
+          <div class="flex lg:flex-col items-start gap-4">
+            <div class="flex items-center gap-4 lg:flex-col lg:items-start">
+              <span class="font-display font-black text-gold text-5xl leading-none">{{ step.number }}</span>
+              <p class="text-white/30 text-xs tracking-widest uppercase font-medium">{{ step.phase }}</p>
+            </div>
+            @if (!last) {
+              <div class="hidden lg:block w-px h-12 bg-white/10 ml-6 mt-4"></div>
+            }
+          </div>
+          <div class="pb-12 border-b border-white/8" [class]="last ? 'border-b-0' : ''">
+            <h3 class="font-display font-bold text-white text-xl mb-3">{{ step.title }}</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-5">{{ step.description }}</p>
+            <ul class="stagger-group flex flex-col gap-2">
+              @for (activity of step.activities; track activity) {
+                <li class="stagger-item opacity-0 flex items-start gap-3 text-sm text-white/60">
+                  <span class="text-gold mt-1 shrink-0">—</span>
+                  {{ activity }}
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="bg-surface border-t border-white/5 py-20">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 text-center">
+    <h2 class="font-display font-black text-white text-3xl lg:text-5xl mb-6">
+      Gostou do projeto?<br/>
+      <span class="text-gold">Vamos conversar.</span>
+    </h2>
+    <p class="text-white/50 mb-10 max-w-lg mx-auto">
+      Estou disponível para projetos de UX/UI, pesquisa de usuário e desenvolvimento frontend.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a
+        href="mailto:sara@exemplo.com"
+        class="inline-flex items-center gap-2 bg-gold text-dark font-display font-bold px-8 py-4 text-sm tracking-wide uppercase hover:opacity-90 transition-opacity no-underline"
+      >
+        <lucide-icon name="arrow-right" [size]="16"></lucide-icon>
+        Entrar em Contato
+      </a>
+      <button
+        (click)="goBack()"
+        class="inline-flex items-center gap-2 border-2 border-white/20 text-white/60 hover:text-white hover:border-white/50 font-display font-semibold px-8 py-4 text-sm tracking-wide uppercase transition-all bg-transparent cursor-pointer"
+      >
+        <lucide-icon name="arrow-right" [size]="14" class="rotate-180"></lucide-icon>
+        Voltar ao Portfólio
+      </button>
+    </div>
+  </div>
+</section>

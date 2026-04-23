@@ -1,0 +1,93 @@
+<nav
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  [class]="scrolled()
+    ? 'bg-dark/95 backdrop-blur-md shadow-xl'
+    : 'bg-transparent'"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+
+    <!-- Logo -->
+    <button
+      (click)="scrollTo('hero')"
+      class="font-display font-bold text-lg tracking-tight transition-colors duration-300 cursor-pointer"
+      [class]="scrolled() ? 'text-white' : 'text-dark'"
+    >
+      Sara Holanda
+    </button>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
+      @for (link of navLinks; track link.id) {
+        <li>
+          <button
+            (click)="scrollTo(link.id)"
+            class="text-sm font-medium tracking-widest uppercase transition-all duration-200 cursor-pointer bg-transparent border-0 hover:opacity-60"
+            [class]="scrolled() ? 'text-white' : 'text-dark'"
+          >
+            {{ link.label }}
+          </button>
+        </li>
+      }
+    </ul>
+
+    <!-- Social links -->
+    <div class="hidden md:flex items-center gap-5">
+      <a
+        href="https://github.com/Holandara"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="transition-opacity duration-200 hover:opacity-60"
+        [class]="scrolled() ? 'text-white' : 'text-dark'"
+      >
+        <lucide-icon name="github" [size]="20" [strokeWidth]="1.75"></lucide-icon>
+      </a>
+      <a
+        href="https://linkedin.com/in/sara-Holanda"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        class="transition-opacity duration-200 hover:opacity-60"
+        [class]="scrolled() ? 'text-white' : 'text-dark'"
+      >
+        <lucide-icon name="linkedin" [size]="20" [strokeWidth]="1.75"></lucide-icon>
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      class="md:hidden p-2 bg-transparent border-0 cursor-pointer transition-colors"
+      [class]="scrolled() ? 'text-white' : 'text-dark'"
+      (click)="toggleMenu()"
+      aria-label="Menu"
+    >
+      @if (menuOpen()) {
+        <lucide-icon name="x" [size]="24"></lucide-icon>
+      } @else {
+        <lucide-icon name="menu" [size]="24"></lucide-icon>
+      }
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  @if (menuOpen()) {
+    <div class="md:hidden bg-dark border-t border-white/10 px-6 py-6 flex flex-col gap-4">
+      @for (link of navLinks; track link.id) {
+        <button
+          (click)="scrollTo(link.id)"
+          class="text-left text-white text-base font-medium tracking-widest uppercase bg-transparent border-0 cursor-pointer hover:text-amber-flame transition-colors"
+        >
+          {{ link.label }}
+        </button>
+      }
+      <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+        <a href="https://github.com/Holandara" target="_blank" rel="noopener noreferrer" class="text-white hover:opacity-60 transition-opacity">
+          <lucide-icon name="github" [size]="20"></lucide-icon>
+        </a>
+        <a href="https://linkedin.com/in/sara-holanda" target="_blank" rel="noopener noreferrer" class="text-white hover:opacity-60 transition-opacity">
+          <lucide-icon name="linkedin" [size]="20"></lucide-icon>
+        </a>
+      </div>
+    </div>
+  }
+</nav>

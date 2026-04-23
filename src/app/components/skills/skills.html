@@ -1,0 +1,58 @@
+<section id="skills" class="bg-teal-blue py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Header -->
+    <div class="section-header mb-16">
+      <p class="reveal-child text-white/50 text-sm font-medium tracking-[0.3em] uppercase mb-3 opacity-0">
+        Ferramentas &amp; Competências
+      </p>
+      <h2 class="reveal-child font-display font-black text-white leading-none opacity-0"
+          style="font-size: clamp(2.5rem, 6vw, 5rem);">
+        Skills
+      </h2>
+      <div class="reveal-child w-20 h-1 bg-white/40 mt-4 opacity-0"></div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex flex-wrap gap-2 mb-12">
+      @for (cat of categories; track cat.id) {
+        <button
+          (click)="setCategory(cat.id)"
+          class="font-display font-semibold text-xs tracking-widest uppercase px-5 py-2.5 border-2 transition-all duration-200 cursor-pointer"
+          [class]="activeCategory() === cat.id
+            ? 'bg-white text-teal-blue border-white'
+            : 'bg-transparent text-white/70 border-white/30 hover:border-white/60 hover:text-white'"
+        >
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Skills grid -->
+    <div class="skills-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      @for (skill of filteredSkills(); track skill.name) {
+        <div
+          class="skill-card group flex flex-col items-center gap-3 bg-white/10 border border-white/20 p-6 hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:-translate-y-1 cursor-default opacity-0"
+        >
+          <lucide-icon
+            [name]="skill.icon"
+            [size]="32"
+            [strokeWidth]="1.5"
+            class="text-white"
+          ></lucide-icon>
+          <span class="font-display font-semibold text-white text-sm text-center leading-tight">
+            {{ skill.name }}
+          </span>
+        </div>
+      }
+    </div>
+
+    <!-- Background word -->
+    <p
+      class="mt-20 font-display font-black text-white/5 select-none pointer-events-none text-center leading-none"
+      style="font-size: clamp(4rem, 16vw, 12rem);"
+      aria-hidden="true"
+    >SKILLS</p>
+
+  </div>
+</section>

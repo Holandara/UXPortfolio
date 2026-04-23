@@ -1,0 +1,102 @@
+<section id="projects" class="bg-gold py-28 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Header -->
+    <div class="section-header mb-16">
+      <p class="reveal-child text-dark/50 text-sm font-medium tracking-[0.3em] uppercase mb-3 opacity-0">
+        Estudos de Caso
+      </p>
+      <h2 class="reveal-child font-display font-black text-dark leading-none opacity-0"
+          style="font-size: clamp(2.5rem, 6vw, 5rem);">
+        UX Projects
+      </h2>
+      <div class="reveal-child w-20 h-1 bg-dark mt-4 opacity-0"></div>
+    </div>
+
+    <!-- Projects -->
+    <div class="flex flex-col gap-28">
+      @for (project of projects(); track project.id; let i = $index) {
+        <article
+          class="project-article grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          [class]="i % 2 !== 0 ? 'lg:[&>.project-content]:order-first' : ''"
+        >
+          <!-- Phone mockup / screen carousel -->
+          <div class="project-media relative opacity-0">
+            <!-- Container que muda conforme o formato -->
+            <div class="relative bg-dark rounded-2xl overflow-hidden shadow-2xl mx-auto lg:mx-0"
+                 [class]="project.format === 'mobile'
+                   ? 'aspect-[9/16] max-w-xs'
+                   : 'aspect-video max-w-2xl w-full'">
+
+              <img
+                [src]="project.screens[getActiveScreen(project.id)]"
+                [alt]="project.title + ' screen'"
+                class="w-full h-full object-cover transition-opacity duration-300"
+              />
+
+              <!-- Dots -->
+              <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                @for (screen of project.screens; track $index) {
+                  <button
+                    (click)="setActiveScreen(project.id, $index)"
+                    class="w-2 h-2 rounded-full transition-all duration-200 border-0 cursor-pointer p-0"
+                    [class]="getActiveScreen(project.id) === $index ? 'bg-amber-flame scale-125' : 'bg-white/40 hover:bg-white/70'"
+                    [attr.aria-label]="'Screen ' + ($index + 1)"
+                  ></button>
+                }
+              </div>
+
+              <!-- Prev / Next -->
+              <button
+                (click)="prevScreen(project)"
+                class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/40 text-white rounded-full flex items-center justify-center border-0 cursor-pointer hover:bg-black/60 transition-colors z-10"
+              >
+                <lucide-icon name="chevron-down" [size]="14" class="rotate-90"></lucide-icon>
+              </button>
+              <button
+                (click)="nextScreen(project)"
+                class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/40 text-white rounded-full flex items-center justify-center border-0 cursor-pointer hover:bg-black/60 transition-colors z-10"
+              >
+                <lucide-icon name="chevron-down" [size]="14" class="-rotate-90"></lucide-icon>
+              </button>
+            </div>
+
+            <!-- Efeito decorativo - ajustado para cada formato -->
+            <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-dark/10 rounded-full -z-10"
+                 [class]="project.format === 'desktop' ? 'hidden lg:block' : ''">
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="project-content opacity-0">
+            <span class="inline-block bg-dark text-amber-flame text-xs font-display font-bold tracking-widest uppercase px-3 py-1 mb-6">
+              Case Study 0{{ i + 1 }}
+            </span>
+            <h3 class="font-display font-black text-dark mb-2"
+                style="font-size: clamp(2rem, 4vw, 3rem);">
+              {{ project.title }}
+            </h3>
+            <p class="text-dark/60 font-medium text-lg mb-6">{{ project.subtitle }}</p>
+            <p class="text-dark/80 leading-relaxed text-base mb-8">{{ project.description }}</p>
+
+            <div class="flex flex-wrap gap-2 mb-10">
+              @for (tag of project.tags; track tag) {
+                <span class="text-xs font-medium bg-dark/10 text-dark px-3 py-1.5 rounded-full border border-dark/20">
+                  {{ tag }}
+                </span>
+              }
+            </div>
+
+            <a
+              [routerLink]="project.route"
+              class="inline-flex items-center gap-2 bg-dark text-white font-display font-semibold px-7 py-3.5 text-sm tracking-wide uppercase hover:bg-dark/80 transition-colors duration-200 no-underline cursor-pointer"
+            >
+              Ver Case Completo
+              <lucide-icon name="arrow-right" [size]="14"></lucide-icon>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

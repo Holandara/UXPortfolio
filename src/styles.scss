@@ -1,0 +1,63 @@
+/* Tailwind v4 CSS-first configuration */
+/* Layer order ensures Tailwind utilities always override PrimeNG */
+@layer theme, base, primeng, components, utilities;
+
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+
+@theme {
+  /* ── Brand palette ── */
+  --color-amber-flame: #FBAF00;
+  --color-gold: #FFD639;
+  --color-cotton-candy: #FFA3AF;
+  --color-teal-blue: #007CBE;
+  --color-jungle: #00AF54;
+
+  /* ── Neutrals ── */
+  --color-dark: #0F0F0F;
+  --color-surface: #161616;
+  --color-card: #1E1E1E;
+  --color-muted: #6B7280;
+
+  /* ── Typography ── */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* ── Spacing extras ── */
+  --spacing-section: 6rem;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--color-dark);
+    color: #fff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  ::selection {
+    background-color: var(--color-amber-flame);
+    color: #0F0F0F;
+  }
+}
