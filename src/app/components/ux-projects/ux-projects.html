@@ -1,16 +1,16 @@
-<section id="projects" class="bg-gold py-28 overflow-hidden">
+<section id="projects" class="bg-lemon-cream py-28 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
     <!-- Header -->
     <div class="section-header mb-16">
-      <p class="reveal-child text-dark/50 text-sm font-medium tracking-[0.3em] uppercase mb-3 opacity-0">
+      <p class="reveal-child text-raspberry-rose/60 text-sm font-medium tracking-[0.3em] uppercase mb-3 opacity-0">
         Estudos de Caso
       </p>
-      <h2 class="reveal-child font-display font-black text-dark leading-none opacity-0"
+      <h2 class="reveal-child font-display font-black text-raspberry-rose leading-none opacity-0"
           style="font-size: clamp(2.5rem, 6vw, 5rem);">
         UX Projects
       </h2>
-      <div class="reveal-child w-20 h-1 bg-dark mt-4 opacity-0"></div>
+      <div class="reveal-child w-20 h-1 bg-raspberry-rose/40 mt-4 opacity-0"></div>
     </div>
 
     <!-- Projects -->
@@ -40,7 +40,7 @@
                   <button
                     (click)="setActiveScreen(project.id, $index)"
                     class="w-2 h-2 rounded-full transition-all duration-200 border-0 cursor-pointer p-0"
-                    [class]="getActiveScreen(project.id) === $index ? 'bg-amber-flame scale-125' : 'bg-white/40 hover:bg-white/70'"
+                    [class]="getActiveScreen(project.id) === $index ? 'bg-raspberry-rose scale-125' : 'bg-white/40 hover:bg-white/70'"
                     [attr.aria-label]="'Screen ' + ($index + 1)"
                   ></button>
                 }
@@ -69,7 +69,7 @@
 
           <!-- Text -->
           <div class="project-content opacity-0">
-            <span class="inline-block bg-dark text-amber-flame text-xs font-display font-bold tracking-widest uppercase px-3 py-1 mb-6">
+            <span class="inline-block bg-dark text-raspberry-rose text-xs font-display font-bold tracking-widest uppercase px-3 py-1 mb-6">
               Case Study 0{{ i + 1 }}
             </span>
             <h3 class="font-display font-black text-dark mb-2"

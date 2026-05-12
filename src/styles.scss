@@ -7,11 +7,10 @@
 
 @theme {
   /* ── Brand palette ── */
-  --color-amber-flame: #FBAF00;
-  --color-gold: #FFD639;
-  --color-cotton-candy: #FFA3AF;
-  --color-teal-blue: #007CBE;
-  --color-jungle: #00AF54;
+  --color-raspberry-rose: #F2619C;
+  --color-soft-lilac: #E7BEF8;
+  --color-blueberry-milk: #93ABD9;
+  --color-lemon-cream: #EDE986;
 
   /* ── Neutrals ── */
   --color-dark: #0F0F0F;
@@ -57,7 +56,7 @@
   }
 
   ::selection {
-    background-color: var(--color-amber-flame);
-    color: #0F0F0F;
+    background-color: var(--color-raspberry-rose);
+    color: #fff;
   }
 }

@@ -33,27 +33,27 @@
   }
 
   ::selection {
-    background-color: #FBAF00;
-    color: #0F0F0F;
+    background-color: #F2619C;
+    color: #fff;
   }
 }
 
 @layer utilities {
-  .bg-amber-flame {
-    background-color: #FBAF00;
+  /* ── New palette ── */
+  .bg-raspberry-rose {
+    background-color: #F2619C;
   }
-  .bg-gold {
-    background-color: #FFD639;
+  .bg-soft-lilac {
+    background-color: #E7BEF8;
   }
-  .bg-cotton-candy {
-    background-color: #FFA3AF;
+  .bg-blueberry-milk {
+    background-color: #93ABD9;
   }
-  .bg-teal-blue {
-    background-color: #007CBE;
+  .bg-lemon-cream {
+    background-color: #EDE986;
   }
-  .bg-jungle {
-    background-color: #00AF54;
-  }
+
+  /* ── Kept for legacy ── */
   .bg-dark {
     background-color: #0F0F0F;
   }
@@ -63,16 +63,17 @@
   .bg-card {
     background-color: #1E1E1E;
   }
-  .text-amber-flame {
-    color: #FBAF00;
+
+  .text-raspberry-rose {
+    color: #F2619C;
   }
-  .text-gold {
-    color: #FFD639;
+  .text-soft-lilac {
+    color: #E7BEF8;
   }
-  .text-teal-blue {
-    color: #007CBE;
+  .text-blueberry-milk {
+    color: #93ABD9;
   }
-  .text-jungle {
-    color: #00AF54;
+  .text-lemon-cream {
+    color: #EDE986;
   }
 }

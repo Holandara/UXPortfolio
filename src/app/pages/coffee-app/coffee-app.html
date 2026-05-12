@@ -21,7 +21,7 @@
   </div>
 
   <div class="relative max-w-6xl mx-auto px-6 lg:px-10 w-full">
-    <span class="inline-block text-gold text-xs font-display font-bold tracking-[0.3em] uppercase mb-4">
+    <span class="inline-block text-lemon-cream text-xs font-display font-bold tracking-[0.3em] uppercase mb-4">
       Projeto de Curso — Google UX Design Certificate
     </span>
     <h1 class="font-display font-black text-white mb-6 leading-none"
@@ -51,7 +51,7 @@
 
       <!-- O Desafio -->
       <div class="fade-up opacity-0">
-        <p class="text-gold text-xs font-display font-bold tracking-[0.3em] uppercase mb-4">O Desafio</p>
+        <p class="text-lemon-cream text-xs font-display font-bold tracking-[0.3em] uppercase mb-4">O Desafio</p>
         <h2 class="font-display font-black text-white text-3xl lg:text-4xl leading-tight mb-6">
           Um projeto fictício para aprender UX de verdade
         </h2>
@@ -72,7 +72,7 @@
           { value: '✓', label: 'Certificado Google', sub: 'UX Design Professional Certificate' }
         ]; track stat.label) {
           <div class="bg-white/4 border border-white/8 p-6">
-            <p class="font-display font-black text-gold text-3xl">{{ stat.value }}</p>
+            <p class="font-display font-black text-lemon-cream text-3xl">{{ stat.value }}</p>
             <p class="text-white font-semibold text-sm mt-1">{{ stat.label }}</p>
             <p class="text-white/40 text-xs mt-1">{{ stat.sub }}</p>
           </div>
@@ -86,7 +86,7 @@
 <section class="bg-surface py-20">
   <div class="max-w-6xl mx-auto px-6 lg:px-10">
     <div class="fade-up opacity-0 mb-10">
-      <p class="text-gold text-xs font-display font-bold tracking-[0.3em] uppercase mb-3">Protótipo</p>
+      <p class="text-lemon-cream text-xs font-display font-bold tracking-[0.3em] uppercase mb-3">Protótipo</p>
       <h2 class="font-display font-black text-white text-3xl lg:text-4xl">As Telas</h2>
     </div>
 
@@ -97,7 +97,7 @@
           (click)="setGroup(group.id)"
           class="font-display font-semibold text-xs tracking-widest uppercase px-5 py-2.5 border-2 transition-all duration-200 cursor-pointer"
           [class]="activeGroup() === group.id
-            ? 'bg-gold text-dark border-gold'
+            ? 'bg-lemon-cream text-dark border-lemon-cream'
             : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white'"
         >
           {{ group.label }}
@@ -118,20 +118,20 @@
         <!-- Prev / Next -->
         <button
           (click)="prevScreen()"
-          class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-gold hover:text-dark text-white rounded-full flex items-center justify-center border-0 cursor-pointer transition-colors duration-200 backdrop-blur-sm"
+          class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-lemon-cream hover:text-dark text-white rounded-full flex items-center justify-center border-0 cursor-pointer transition-colors duration-200 backdrop-blur-sm"
         >
           <lucide-icon name="chevron-down" [size]="16" class="rotate-90"></lucide-icon>
         </button>
         <button
           (click)="nextScreen()"
-          class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-gold hover:text-dark text-white rounded-full flex items-center justify-center border-0 cursor-pointer transition-colors duration-200 backdrop-blur-sm"
+          class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-lemon-cream hover:text-dark text-white rounded-full flex items-center justify-center border-0 cursor-pointer transition-colors duration-200 backdrop-blur-sm"
         >
           <lucide-icon name="chevron-down" [size]="16" class="-rotate-90"></lucide-icon>
         </button>
 
         <!-- Label overlay bottom -->
         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-6 py-5">
-          <p class="text-gold font-display font-semibold text-sm">{{ screens[activeScreen()].label }}</p>
+          <p class="text-lemon-cream font-display font-semibold text-sm">{{ screens[activeScreen()].label }}</p>
           <p class="text-white/60 text-xs mt-0.5 leading-relaxed">{{ screens[activeScreen()].description }}</p>
         </div>
 
@@ -148,7 +148,7 @@
             (click)="setScreen(screens.indexOf(screen))"
             class="relative flex-shrink-0 w-28 aspect-[16/10] overflow-hidden border-2 rounded transition-all duration-200 cursor-pointer p-0 bg-transparent"
             [class]="screens[activeScreen()].src === screen.src
-              ? 'border-gold shadow-md shadow-yellow-500/20 opacity-100'
+              ? 'border-lemon-cream shadow-md shadow-pink-500/20 opacity-100'
               : 'border-white/10 hover:border-white/30 opacity-50 hover:opacity-80'"
           >
             <img
@@ -165,7 +165,7 @@
 </section>
 
 <!-- ── INSIGHTS ── -->
-<section class="bg-gold py-20">
+<section class="bg-lemon-cream py-20">
   <div class="max-w-6xl mx-auto px-6 lg:px-10">
     <div class="fade-up opacity-0 mb-12">
       <p class="text-dark/50 text-xs font-display font-bold tracking-[0.3em] uppercase mb-3">Aprendizados</p>
@@ -194,7 +194,7 @@
 <section class="bg-dark py-20">
   <div class="max-w-6xl mx-auto px-6 lg:px-10">
     <div class="fade-up opacity-0 mb-16">
-      <p class="text-gold text-xs font-display font-bold tracking-[0.3em] uppercase mb-3">Google UX Design Certificate</p>
+      <p class="text-lemon-cream text-xs font-display font-bold tracking-[0.3em] uppercase mb-3">Google UX Design Certificate</p>
       <h2 class="font-display font-black text-white text-3xl lg:text-4xl">As fases do projeto</h2>
     </div>
 
@@ -203,7 +203,7 @@
         <div class="fade-up opacity-0 grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-0 lg:gap-10">
           <div class="flex lg:flex-col items-start gap-4">
             <div class="flex items-center gap-4 lg:flex-col lg:items-start">
-              <span class="font-display font-black text-gold text-5xl leading-none">{{ step.number }}</span>
+              <span class="font-display font-black text-lemon-cream text-5xl leading-none">{{ step.number }}</span>
               <p class="text-white/30 text-xs tracking-widest uppercase font-medium">{{ step.phase }}</p>
             </div>
             @if (!last) {
@@ -216,7 +216,7 @@
             <ul class="stagger-group flex flex-col gap-2">
               @for (activity of step.activities; track activity) {
                 <li class="stagger-item opacity-0 flex items-start gap-3 text-sm text-white/60">
-                  <span class="text-gold mt-1 shrink-0">—</span>
+                  <span class="text-lemon-cream mt-1 shrink-0">—</span>
                   {{ activity }}
                 </li>
               }
@@ -233,7 +233,7 @@
   <div class="max-w-6xl mx-auto px-6 lg:px-10 text-center">
     <h2 class="font-display font-black text-white text-3xl lg:text-5xl mb-6">
       Gostou do projeto?<br/>
-      <span class="text-gold">Vamos conversar.</span>
+      <span class="text-lemon-cream">Vamos conversar.</span>
     </h2>
     <p class="text-white/50 mb-10 max-w-lg mx-auto">
       Estou disponível para projetos de UX/UI, pesquisa de usuário e desenvolvimento frontend.
@@ -241,7 +241,7 @@
     <div class="flex flex-wrap gap-4 justify-center">
       <a
         href="mailto:sara@exemplo.com"
-        class="inline-flex items-center gap-2 bg-gold text-dark font-display font-bold px-8 py-4 text-sm tracking-wide uppercase hover:opacity-90 transition-opacity no-underline"
+        class="inline-flex items-center gap-2 bg-lemon-cream text-dark font-display font-bold px-8 py-4 text-sm tracking-wide uppercase hover:opacity-90 transition-opacity no-underline"
       >
         <lucide-icon name="arrow-right" [size]="16"></lucide-icon>
         Entrar em Contato

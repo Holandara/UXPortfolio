@@ -52,7 +52,7 @@ export class HackathonsComponent implements AfterViewInit {
 
   getBadgeClass(position: string): string {
     switch (position) {
-      case '1st':  return 'bg-amber-flame text-dark';
+      case '1st':  return 'bg-raspberry-rose text-white';
       case '2nd':  return 'bg-dark/20 text-dark';
       default:     return 'bg-dark/10 text-dark/70';
     }
