@@ -8,33 +8,27 @@ const client = createClient({
   useCdn: false,
 });
 
-export default async (req: Request) => {
-  if (req.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405 });
+export const handler = async (event: any) => {
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
   try {
-    const { articleId } = await req.json();
+    const { articleId } = JSON.parse(event.body || '{}');
+
     if (!articleId || typeof articleId !== 'string') {
-      return new Response(JSON.stringify({ error: 'Missing articleId' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return { statusCode: 400, body: JSON.stringify({ error: 'Missing articleId' }) };
     }
 
     await client.patch(articleId).setIfMissing({ likes: 0 }).inc({ likes: 1 }).commit();
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
+    return {
+      statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-    });
+      body: JSON.stringify({ success: true }),
+    };
   } catch (err) {
     console.error('[like-article]', err);
-    return new Response(JSON.stringify({ error: 'Internal error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return { statusCode: 500, body: JSON.stringify({ error: 'Internal error' }) };
   }
 };
-
-export const config = { path: '/api/like-article' };

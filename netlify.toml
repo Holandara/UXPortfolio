@@ -3,9 +3,12 @@
   publish   = "dist/portfolio/browser"
   functions = "netlify/functions"
 
+[functions]
+  node_bundler = "esbuild"
+
 [dev]
-  command = "ng serve"
-  port    = 4200
+  command    = "ng serve"
+  port       = 4200
   targetPort = 4200
 
 [[redirects]]
