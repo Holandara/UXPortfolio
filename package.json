@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
     "@primeuix/themes": "^2.0.3",
+    "@sanity/client": "^7.22.0",
     "autoprefixer": "^10.5.0",
     "lucide-angular": "^1.0.0",
     "motion": "^12.38.0",

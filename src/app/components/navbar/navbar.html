@@ -20,7 +20,7 @@
       @for (link of navLinks; track link.id) {
         <li>
           <button
-            (click)="scrollTo(link.id)"
+            (click)="handleNavClick(link)"
             class="text-sm font-medium tracking-widest uppercase transition-all duration-200 cursor-pointer bg-transparent border-0 hover:opacity-60"
             [class]="scrolled() ? 'text-white' : 'text-dark'"
           >

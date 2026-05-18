@@ -2,23 +2,28 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostListener,
+  inject,
   signal,
 } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 
 interface NavLink {
   id: string;
   label: string;
+  route?: string;
 }
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './navbar.html',
 })
 export class NavbarComponent {
+  private readonly router = inject(Router);
+
   readonly scrolled = signal(false);
   readonly menuOpen = signal(false);
 
@@ -27,6 +32,7 @@ export class NavbarComponent {
     { id: 'hackathons', label: 'Hackathons' },
     { id: 'skills', label: 'Skills' },
     { id: 'gallery', label: 'Arte' },
+    { id: 'artigos', label: 'Artigos', route: '/artigos' },
   ];
 
   @HostListener('window:scroll')
@@ -36,6 +42,15 @@ export class NavbarComponent {
 
   toggleMenu(): void {
     this.menuOpen.update((v) => !v);
+  }
+
+  handleNavClick(link: NavLink): void {
+    this.menuOpen.set(false);
+    if (link.route) {
+      this.router.navigate([link.route]);
+    } else {
+      document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   scrollTo(id: string): void {

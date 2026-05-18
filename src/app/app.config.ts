@@ -1,5 +1,6 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
@@ -19,6 +20,7 @@ import {
   Cpu,
   Layers,
   ArrowRight,
+  ArrowLeft,
   Figma,
   Terminal,
   Palette,
@@ -29,6 +31,9 @@ import {
   Camera,
   Sparkles,
   Brush,
+  Heart,
+  CheckCircle,
+  FileText,
 } from 'lucide-angular';
 
 import { routes } from './app.routes';
@@ -37,6 +42,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
+    provideHttpClient(),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
@@ -67,6 +73,7 @@ export const appConfig: ApplicationConfig = {
         Cpu,
         Layers,
         ArrowRight,
+        ArrowLeft,
         Figma,
         Terminal,
         Palette,
@@ -77,6 +84,9 @@ export const appConfig: ApplicationConfig = {
         Camera,
         Sparkles,
         Brush,
+        Heart,
+        CheckCircle,
+        FileText,
       }),
     },
   ],

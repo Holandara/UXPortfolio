@@ -1,0 +1,143 @@
+<div class="min-h-screen bg-dark text-white">
+
+  <!-- Header -->
+  <div class="border-b border-white/8 pt-24 pb-12">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-xs uppercase tracking-[0.2em] text-raspberry-rose font-medium mb-3">Escrita</p>
+      <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-4">Artigos</h1>
+      <p class="text-muted text-lg max-w-md">
+        Reflexões sobre design, tecnologia e tudo mais que me faz pensar.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-6 py-16">
+
+    <!-- Loading -->
+    @if (loading()) {
+      <div class="flex items-center justify-center py-32">
+        <div class="w-6 h-6 rounded-full border-2 border-raspberry-rose border-t-transparent animate-spin"></div>
+      </div>
+    }
+
+    <!-- Error -->
+    @if (error()) {
+      <div class="text-center py-32 text-muted">
+        Não foi possível carregar os artigos. Tente novamente mais tarde.
+      </div>
+    }
+
+    <!-- Empty -->
+    @if (!loading() && !error() && articles().length === 0) {
+      <div class="text-center py-32">
+        <p class="text-muted text-lg mb-2">Nenhum artigo por enquanto.</p>
+        <p class="text-muted/60 text-sm">Em breve tem coisa nova por aqui.</p>
+      </div>
+    }
+
+    <!-- Featured article -->
+    @if (!loading() && featured) {
+      <a
+        [routerLink]="['/artigos', featured!.slug.current]"
+        class="group block mb-16"
+      >
+        <div class="grid md:grid-cols-5 gap-8 items-center">
+
+          <!-- Text -->
+          <div class="md:col-span-3 order-2 md:order-1">
+            <span class="text-xs uppercase tracking-[0.2em] text-raspberry-rose font-medium">Em destaque</span>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-3 mb-4 leading-tight group-hover:text-raspberry-rose transition-colors duration-200">
+              {{ featured!.title }}
+            </h2>
+            @if (featured!.excerpt) {
+              <p class="text-muted text-base leading-relaxed mb-6 line-clamp-3">
+                {{ featured!.excerpt }}
+              </p>
+            }
+            <div class="flex items-center gap-3 text-sm text-muted/70">
+              <span>{{ featured!.author }}</span>
+              <span class="w-1 h-1 rounded-full bg-muted/40"></span>
+              <span>{{ featured!.publishedAt | date:'d MMM yyyy' }}</span>
+              @if (featured!.likes > 0) {
+                <span class="w-1 h-1 rounded-full bg-muted/40"></span>
+                <span class="flex items-center gap-1">
+                  <lucide-icon name="heart" [size]="13" class="text-raspberry-rose"></lucide-icon>
+                  {{ featured!.likes }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <!-- Cover image -->
+          @if (featured!.coverImage?.url) {
+            <div class="md:col-span-2 order-1 md:order-2">
+              <div class="aspect-video overflow-hidden rounded-lg bg-surface">
+                <img
+                  [src]="featured!.coverImage!.url + '?w=600&auto=format'"
+                  [alt]="featured!.coverImage!.alt ?? featured!.title"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          }
+
+        </div>
+      </a>
+
+      <!-- Divider -->
+      @if (rest.length > 0) {
+        <div class="border-t border-white/8 mb-12"></div>
+      }
+    }
+
+    <!-- Article grid -->
+    @if (!loading() && rest.length > 0) {
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (article of rest; track article._id) {
+          <a
+            [routerLink]="['/artigos', article.slug.current]"
+            class="group flex flex-col"
+          >
+            <!-- Cover -->
+            @if (article.coverImage?.url) {
+              <div class="aspect-video overflow-hidden rounded-lg bg-surface mb-4">
+                <img
+                  [src]="article.coverImage!.url + '?w=400&auto=format'"
+                  [alt]="article.coverImage!.alt ?? article.title"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            } @else {
+              <div class="aspect-video rounded-lg bg-surface mb-4 flex items-center justify-center">
+                <lucide-icon name="file-text" [size]="32" class="text-muted/30"></lucide-icon>
+              </div>
+            }
+
+            <!-- Text -->
+            <div class="flex flex-col flex-1">
+              <h3 class="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-raspberry-rose transition-colors duration-200 line-clamp-2">
+                {{ article.title }}
+              </h3>
+              @if (article.excerpt) {
+                <p class="text-muted text-sm leading-relaxed mb-4 line-clamp-2 flex-1">
+                  {{ article.excerpt }}
+                </p>
+              }
+              <div class="flex items-center gap-2 text-xs text-muted/60 mt-auto">
+                <span>{{ article.publishedAt | date:'d MMM yyyy' }}</span>
+                @if (article.likes > 0) {
+                  <span class="w-1 h-1 rounded-full bg-muted/30"></span>
+                  <span class="flex items-center gap-1">
+                    <lucide-icon name="heart" [size]="11" class="text-raspberry-rose"></lucide-icon>
+                    {{ article.likes }}
+                  </span>
+                }
+              </div>
+            </div>
+          </a>
+        }
+      </div>
+    }
+
+  </div>
+</div>
